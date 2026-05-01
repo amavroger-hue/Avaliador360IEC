@@ -5,13 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discipulado 360º - Plenitude IEC™ | Avaliação</title>
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        }
-
+        * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; }
         :root {
             --primary: #1e3a5f;
             --primary-light: #2c5282;
@@ -26,595 +20,227 @@
             --error: #f56565;
             --shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
         }
+        body { background: var(--bg-light); color: var(--text-dark); line-height: 1.6; min-height: 100vh; }
 
-        body {
-            background: var(--bg-light);
-            color: var(--text-dark);
-            line-height: 1.6;
-            min-height: 100vh;
-        }
-
-        /* HEADER */
         header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--bg-dark) 100%);
-            color: var(--white);
-            padding: 1.5rem 2rem;
-            box-shadow: var(--shadow);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            color: var(--white); padding: 1.5rem 2rem; box-shadow: var(--shadow);
+            position: sticky; top: 0; z-index: 100;
         }
-
         .header-content {
-            max-width: 1200px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 1rem;
+            max-width: 1200px; margin: 0 auto; display: flex;
+            justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;
         }
-
-        .logo {
-            font-size: 1.3rem;
-            font-weight: bold;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
+        .logo { font-size: 1.3rem; font-weight: bold; display: flex; align-items: center; gap: 0.5rem; }
         .produto-badge {
-            background: rgba(212, 165, 116, 0.2);
-            color: var(--secondary);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.85rem;
-            border: 1px solid var(--secondary);
+            background: rgba(212, 165, 116, 0.2); color: var(--secondary);
+            padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.85rem; border: 1px solid var(--secondary);
         }
 
-        /* PROGRESS */
+        /* BANNER CONVITE */
+        .banner-convite {
+            background: linear-gradient(135deg, var(--secondary), var(--accent));
+            color: var(--bg-dark); padding: 1.25rem 2rem; text-align: center;
+            font-weight: 600; box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            font-size: 1.05rem;
+        }
+        .banner-convite strong { font-size: 1.15rem; }
+
         .progress-container {
-            background: var(--white);
-            padding: 1.5rem 2rem;
+            background: var(--white); padding: 1.5rem 2rem;
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
-            position: sticky;
-            top: 80px;
-            z-index: 99;
+            position: sticky; top: 80px; z-index: 99;
         }
-
-        .progress-content {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-
+        .progress-content { max-width: 1200px; margin: 0 auto; }
         .progress-info {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 0.75rem;
-            flex-wrap: wrap;
-            gap: 0.5rem;
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 0.75rem; flex-wrap: wrap; gap: 0.5rem;
         }
-
-        .progress-label {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .progress-percent {
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-
-        .progress-bar {
-            height: 8px;
-            background: var(--bg-light);
-            border-radius: 50px;
-            overflow: hidden;
-        }
-
+        .progress-label { color: var(--primary); font-weight: 600; }
+        .progress-percent { color: var(--secondary); font-weight: bold; font-size: 1.1rem; }
+        .progress-bar { height: 8px; background: var(--bg-light); border-radius: 50px; overflow: hidden; }
         .progress-fill {
-            height: 100%;
-            background: linear-gradient(90deg, var(--secondary), var(--accent));
-            width: 0%;
-            transition: width 0.4s ease;
-            border-radius: 50px;
+            height: 100%; background: linear-gradient(90deg, var(--secondary), var(--accent));
+            width: 0%; transition: width 0.4s ease; border-radius: 50px;
         }
-
-        .steps-indicator {
-            display: flex;
-            gap: 0.4rem;
-            margin-top: 1rem;
-            flex-wrap: wrap;
-        }
-
+        .steps-indicator { display: flex; gap: 0.4rem; margin-top: 1rem; flex-wrap: wrap; }
         .step-dot {
-            width: 30px;
-            height: 30px;
-            border-radius: 50%;
-            background: var(--bg-light);
-            color: var(--text-light);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 0.75rem;
-            font-weight: bold;
-            transition: all 0.3s;
-            cursor: pointer;
+            width: 30px; height: 30px; border-radius: 50%; background: var(--bg-light);
+            color: var(--text-light); display: flex; align-items: center; justify-content: center;
+            font-size: 0.75rem; font-weight: bold; transition: all 0.3s; cursor: pointer;
             border: 2px solid transparent;
         }
-
-        .step-dot.completed {
-            background: var(--success);
-            color: var(--white);
-        }
-
+        .step-dot.completed { background: var(--success); color: var(--white); }
         .step-dot.active {
-            background: var(--primary);
-            color: var(--white);
-            border-color: var(--secondary);
-            transform: scale(1.15);
+            background: var(--primary); color: var(--white);
+            border-color: var(--secondary); transform: scale(1.15);
         }
 
-        /* MAIN */
-        main {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
+        main { max-width: 900px; margin: 0 auto; padding: 2rem; }
         .step-content {
-            background: var(--white);
-            padding: 2.5rem;
-            border-radius: 16px;
-            box-shadow: var(--shadow);
-            display: none;
-            animation: fadeIn 0.4s ease;
+            background: var(--white); padding: 2.5rem; border-radius: 16px;
+            box-shadow: var(--shadow); display: none; animation: fadeIn 0.4s ease;
         }
-
-        .step-content.active {
-            display: block;
-        }
-
+        .step-content.active { display: block; }
         @keyframes fadeIn {
             from { opacity: 0; transform: translateY(20px); }
             to { opacity: 1; transform: translateY(0); }
         }
-
-        .step-header {
-            margin-bottom: 2rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 2px solid var(--bg-light);
-        }
-
+        .step-header { margin-bottom: 2rem; padding-bottom: 1.5rem; border-bottom: 2px solid var(--bg-light); }
         .step-tag {
-            display: inline-block;
-            background: var(--primary);
-            color: var(--white);
-            padding: 0.4rem 1rem;
-            border-radius: 50px;
-            font-size: 0.8rem;
-            margin-bottom: 1rem;
-            font-weight: 500;
+            display: inline-block; background: var(--primary); color: var(--white);
+            padding: 0.4rem 1rem; border-radius: 50px; font-size: 0.8rem;
+            margin-bottom: 1rem; font-weight: 500;
         }
-
         .step-title {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 0.5rem;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            flex-wrap: wrap;
+            color: var(--primary); font-size: 2rem; margin-bottom: 0.5rem;
+            display: flex; align-items: center; gap: 0.5rem; flex-wrap: wrap;
         }
-
-        .step-subtitle {
-            color: var(--text-light);
-        }
+        .step-subtitle { color: var(--text-light); }
 
         .verse-box {
-            background: var(--bg-light);
-            border-left: 4px solid var(--secondary);
-            padding: 1.25rem;
-            margin: 1.5rem 0;
-            border-radius: 8px;
-            font-style: italic;
-            color: var(--text-dark);
+            background: var(--bg-light); border-left: 4px solid var(--secondary);
+            padding: 1.25rem; margin: 1.5rem 0; border-radius: 8px;
+            font-style: italic; color: var(--text-dark);
         }
-
         .verse-box cite {
-            display: block;
-            margin-top: 0.5rem;
-            color: var(--primary);
-            font-weight: bold;
-            font-style: normal;
+            display: block; margin-top: 0.5rem; color: var(--primary);
+            font-weight: bold; font-style: normal;
         }
 
-        /* DADOS PESSOAIS */
-        .form-group {
-            margin-bottom: 1.5rem;
-        }
-
-        .form-group label {
-            display: block;
-            margin-bottom: 0.5rem;
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .form-group label .required {
-            color: var(--error);
-        }
-
-        .form-group input,
-        .form-group select {
-            width: 100%;
-            padding: 0.85rem 1rem;
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            font-size: 1rem;
-            transition: border-color 0.3s;
-            font-family: inherit;
-        }
-
-        .form-group input:focus,
-        .form-group select:focus {
-            outline: none;
-            border-color: var(--secondary);
-        }
-
-        /* PERGUNTAS */
-        .question-card {
-            background: var(--bg-light);
-            padding: 1.5rem;
-            border-radius: 12px;
-            margin-bottom: 1.25rem;
+        .info-avaliacao {
+            background: linear-gradient(135deg, #fef3c7, #fde68a);
             border-left: 4px solid var(--secondary);
-            transition: all 0.3s;
+            padding: 1.25rem; border-radius: 8px; margin: 1.5rem 0;
         }
+        .info-avaliacao h4 { color: var(--primary); margin-bottom: 0.5rem; }
+        .info-avaliacao p { color: var(--text-dark); }
 
-        .question-card.answered {
-            border-left-color: var(--success);
-            background: #f0fdf4;
+        .form-group { margin-bottom: 1.5rem; }
+        .form-group label {
+            display: block; margin-bottom: 0.5rem; color: var(--primary); font-weight: 600;
         }
+        .form-group label .required { color: var(--error); }
+        .form-group input {
+            width: 100%; padding: 0.85rem 1rem; border: 2px solid #e2e8f0;
+            border-radius: 8px; font-size: 1rem; transition: border-color 0.3s; font-family: inherit;
+        }
+        .form-group input:focus { outline: none; border-color: var(--secondary); }
 
+        .question-card {
+            background: var(--bg-light); padding: 1.5rem; border-radius: 12px;
+            margin-bottom: 1.25rem; border-left: 4px solid var(--secondary); transition: all 0.3s;
+        }
+        .question-card.answered { border-left-color: var(--success); background: #f0fdf4; }
         .question-number {
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 0.85rem;
-            margin-bottom: 0.5rem;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            color: var(--secondary); font-weight: bold; font-size: 0.85rem;
+            margin-bottom: 0.5rem; text-transform: uppercase; letter-spacing: 1px;
         }
-
         .question-text {
-            color: var(--text-dark);
-            font-size: 1.05rem;
-            margin-bottom: 1.25rem;
-            font-weight: 500;
-            line-height: 1.5;
+            color: var(--text-dark); font-size: 1.05rem; margin-bottom: 1.25rem;
+            font-weight: 500; line-height: 1.5;
         }
+        .question-text strong { color: var(--primary); }
 
-        .scale-options {
-            display: grid;
-            grid-template-columns: repeat(5, 1fr);
-            gap: 0.5rem;
-        }
-
-        .scale-option {
-            position: relative;
-        }
-
-        .scale-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-        }
-
+        .scale-options { display: grid; grid-template-columns: repeat(5, 1fr); gap: 0.5rem; }
+        .scale-option { position: relative; }
+        .scale-option input[type="radio"] { position: absolute; opacity: 0; cursor: pointer; }
         .scale-option label {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding: 1rem 0.5rem;
-            background: var(--white);
-            border: 2px solid #e2e8f0;
-            border-radius: 8px;
-            cursor: pointer;
-            transition: all 0.2s;
-            text-align: center;
-            font-size: 0.85rem;
-            min-height: 80px;
+            display: flex; flex-direction: column; align-items: center; justify-content: center;
+            padding: 1rem 0.5rem; background: var(--white); border: 2px solid #e2e8f0;
+            border-radius: 8px; cursor: pointer; transition: all 0.2s; text-align: center;
+            font-size: 0.85rem; min-height: 80px;
         }
-
         .scale-option label .scale-number {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--text-light);
-            margin-bottom: 0.25rem;
+            font-size: 1.5rem; font-weight: bold; color: var(--text-light); margin-bottom: 0.25rem;
         }
-
-        .scale-option label .scale-text {
-            color: var(--text-light);
-            font-size: 0.75rem;
-        }
-
+        .scale-option label .scale-text { color: var(--text-light); font-size: 0.75rem; }
         .scale-option input[type="radio"]:checked + label {
-            background: var(--primary);
-            border-color: var(--secondary);
-            color: var(--white);
+            background: var(--primary); border-color: var(--secondary); color: var(--white);
         }
-
         .scale-option input[type="radio"]:checked + label .scale-number,
-        .scale-option input[type="radio"]:checked + label .scale-text {
-            color: var(--white);
-        }
+        .scale-option input[type="radio"]:checked + label .scale-text { color: var(--white); }
+        .scale-option label:hover { border-color: var(--secondary); transform: translateY(-2px); }
 
-        .scale-option label:hover {
-            border-color: var(--secondary);
-            transform: translateY(-2px);
-        }
-
-        /* NAVIGATION */
         .navigation {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 2rem;
-            gap: 1rem;
-            flex-wrap: wrap;
+            display: flex; justify-content: space-between; margin-top: 2rem; gap: 1rem; flex-wrap: wrap;
         }
-
         .btn {
-            padding: 0.9rem 2rem;
-            border-radius: 50px;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            border: none;
-            transition: all 0.3s;
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
+            padding: 0.9rem 2rem; border-radius: 50px; font-size: 1rem; font-weight: 600;
+            cursor: pointer; border: none; transition: all 0.3s;
+            display: inline-flex; align-items: center; gap: 0.5rem; text-decoration: none;
         }
-
-        .btn-primary {
-            background: var(--secondary);
-            color: var(--bg-dark);
-        }
-
+        .btn-primary { background: var(--secondary); color: var(--bg-dark); }
         .btn-primary:hover {
-            background: var(--accent);
-            transform: translateY(-2px);
+            background: var(--accent); transform: translateY(-2px);
             box-shadow: 0 10px 25px rgba(212, 165, 116, 0.3);
         }
+        .btn-secondary { background: transparent; color: var(--primary); border: 2px solid var(--primary); }
+        .btn-secondary:hover { background: var(--primary); color: var(--white); }
 
-        .btn-primary:disabled {
-            background: #cbd5e0;
-            cursor: not-allowed;
-            transform: none;
-            box-shadow: none;
-        }
-
-        .btn-secondary {
-            background: transparent;
-            color: var(--primary);
-            border: 2px solid var(--primary);
-        }
-
-        .btn-secondary:hover {
-            background: var(--primary);
-            color: var(--white);
-        }
-
-        /* LOADING */
         .loading-overlay {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(15, 31, 58, 0.95);
-            z-index: 9999;
-            justify-content: center;
-            align-items: center;
-            flex-direction: column;
-            color: var(--white);
+            display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(15, 31, 58, 0.95); z-index: 9999;
+            justify-content: center; align-items: center; flex-direction: column; color: var(--white);
         }
-
-        .loading-overlay.active {
-            display: flex;
-        }
-
+        .loading-overlay.active { display: flex; }
         .spinner {
-            width: 60px;
-            height: 60px;
-            border: 5px solid rgba(212, 165, 116, 0.3);
-            border-top-color: var(--secondary);
-            border-radius: 50%;
-            animation: spin 1s linear infinite;
-            margin-bottom: 1.5rem;
+            width: 60px; height: 60px; border: 5px solid rgba(212, 165, 116, 0.3);
+            border-top-color: var(--secondary); border-radius: 50%;
+            animation: spin 1s linear infinite; margin-bottom: 1.5rem;
         }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .loading-text { font-size: 1.2rem; margin-bottom: 0.5rem; }
+        .loading-subtext { opacity: 0.8; font-size: 0.95rem; }
 
-        @keyframes spin {
-            to { transform: rotate(360deg); }
-        }
-
-        .loading-text {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .loading-subtext {
-            opacity: 0.8;
-            font-size: 0.95rem;
-        }
-
-        /* SUCCESS */
-        .success-screen {
-            text-align: center;
-            padding: 3rem 2rem;
-        }
-
-        .success-icon {
-            font-size: 5rem;
-            margin-bottom: 1rem;
-        }
-
-        .success-title {
-            color: var(--primary);
-            font-size: 2rem;
-            margin-bottom: 1rem;
-        }
-
+        .success-screen { text-align: center; padding: 3rem 2rem; }
+        .success-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .success-title { color: var(--primary); font-size: 2rem; margin-bottom: 1rem; }
         .success-message {
-            color: var(--text-light);
-            font-size: 1.1rem;
-            margin-bottom: 2rem;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
+            color: var(--text-light); font-size: 1.1rem; margin-bottom: 2rem;
+            max-width: 500px; margin-left: auto; margin-right: auto;
         }
 
-        /* TIPO AVALIADOR */
-        .tipo-avaliador-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+        .erro-screen { text-align: center; padding: 3rem 2rem; }
+        .erro-icon { font-size: 5rem; margin-bottom: 1rem; }
+        .erro-title { color: var(--error); font-size: 2rem; margin-bottom: 1rem; }
+        .erro-message {
+            color: var(--text-light); font-size: 1.05rem; margin-bottom: 1.5rem;
+            max-width: 600px; margin-left: auto; margin-right: auto;
+        }
+        .erro-code {
+            background: var(--bg-light); padding: 1rem; border-radius: 8px;
+            font-family: monospace; color: var(--text-dark); margin-top: 1rem;
+            word-break: break-all;
         }
 
-        .tipo-option {
-            position: relative;
-        }
-
-        .tipo-option input[type="radio"] {
-            position: absolute;
-            opacity: 0;
-        }
-
-        .tipo-option label {
-            display: block;
-            padding: 1.5rem;
-            background: var(--bg-light);
-            border: 2px solid transparent;
-            border-radius: 12px;
-            cursor: pointer;
-            text-align: center;
-            transition: all 0.2s;
-        }
-
-        .tipo-option label .tipo-icon {
-            font-size: 2.5rem;
-            display: block;
-            margin-bottom: 0.5rem;
-        }
-
-        .tipo-option label .tipo-name {
-            color: var(--primary);
-            font-weight: 600;
-        }
-
-        .tipo-option input[type="radio"]:checked + label {
-            background: var(--primary);
-            border-color: var(--secondary);
-        }
-
-        .tipo-option input[type="radio"]:checked + label .tipo-name {
-            color: var(--white);
-        }
-
-        /* FOOTER */
         footer {
-            background: var(--bg-dark);
-            color: var(--white);
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
+            background: var(--bg-dark); color: var(--white); padding: 2rem;
+            text-align: center; margin-top: 3rem;
         }
+        footer p { opacity: 0.8; margin-bottom: 0.5rem; }
+        footer .marca { color: var(--secondary); font-weight: bold; opacity: 1; }
 
-        footer p {
-            opacity: 0.8;
-            margin-bottom: 0.5rem;
-        }
-
-        footer .marca {
-            color: var(--secondary);
-            font-weight: bold;
-            opacity: 1;
-        }
-
-        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .step-content {
-                padding: 1.5rem;
-            }
-
-            .step-title {
-                font-size: 1.5rem;
-            }
-
-            .scale-options {
-                grid-template-columns: repeat(5, 1fr);
-                gap: 0.25rem;
-            }
-
-            .scale-option label {
-                padding: 0.5rem 0.25rem;
-                min-height: 60px;
-                font-size: 0.7rem;
-            }
-
-            .scale-option label .scale-number {
-                font-size: 1.1rem;
-            }
-
-            .scale-option label .scale-text {
-                display: none;
-            }
-
-            .progress-container {
-                top: 70px;
-                padding: 1rem;
-            }
-
-            .step-dot {
-                width: 24px;
-                height: 24px;
-                font-size: 0.7rem;
-            }
+            .step-content { padding: 1.5rem; }
+            .step-title { font-size: 1.5rem; }
+            .scale-options { grid-template-columns: repeat(5, 1fr); gap: 0.25rem; }
+            .scale-option label { padding: 0.5rem 0.25rem; min-height: 60px; font-size: 0.7rem; }
+            .scale-option label .scale-number { font-size: 1.1rem; }
+            .scale-option label .scale-text { display: none; }
+            .progress-container { top: 70px; padding: 1rem; }
+            .step-dot { width: 24px; height: 24px; font-size: 0.7rem; }
         }
 
-        /* TOAST */
         .toast {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background: var(--primary);
-            color: var(--white);
-            padding: 1rem 1.5rem;
-            border-radius: 8px;
-            box-shadow: var(--shadow);
-            z-index: 1000;
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 0.3s;
-            max-width: 300px;
+            position: fixed; bottom: 2rem; right: 2rem; background: var(--primary);
+            color: var(--white); padding: 1rem 1.5rem; border-radius: 8px;
+            box-shadow: var(--shadow); z-index: 1000; opacity: 0;
+            transform: translateY(20px); transition: all 0.3s; max-width: 300px;
         }
-
-        .toast.show {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .toast.success {
-            background: var(--success);
-        }
-
-        .toast.error {
-            background: var(--error);
-        }
+        .toast.show { opacity: 1; transform: translateY(0); }
+        .toast.success { background: var(--success); }
+        .toast.error { background: var(--error); }
     </style>
 </head>
 <body>
@@ -629,11 +255,17 @@
         </div>
     </header>
 
-    <!-- PROGRESS -->
-    <div class="progress-container">
+    <!-- BANNER DE CONVITE (aparece quando link é válido) -->
+    <div class="banner-convite" id="bannerConvite" style="display: none;">
+        🎯 Você foi convidado a avaliar <strong id="bannerNome"></strong> 
+        como <strong id="bannerTipo"></strong>
+    </div>
+
+    <!-- PROGRESS (só aparece se link válido) -->
+    <div class="progress-container" id="progressContainer" style="display: none;">
         <div class="progress-content">
             <div class="progress-info">
-                <span class="progress-label" id="progressLabel">Etapa 1 de 10 - Dados Pessoais</span>
+                <span class="progress-label" id="progressLabel">Etapa 1 de 10 - Identificação</span>
                 <span class="progress-percent" id="progressPercent">0%</span>
             </div>
             <div class="progress-bar">
@@ -645,75 +277,63 @@
 
     <!-- MAIN -->
     <main>
-        <!-- ETAPA 0: DADOS PESSOAIS -->
-        <div class="step-content active" data-step="0">
+        <!-- TELA DE ERRO (link inválido) -->
+        <div class="step-content active" id="telaErro" style="display: none;">
+            <div class="erro-screen">
+                <div class="erro-icon">⚠️</div>
+                <h2 class="erro-title">Link Inválido</h2>
+                <p class="erro-message">
+                    Este link não contém um código de avaliação válido. Você precisa receber 
+                    um link específico do(a) avaliado(a) para iniciar a avaliação.
+                </p>
+                <div class="info-avaliacao">
+                    <h4>📩 O que fazer?</h4>
+                    <p>Solicite ao(à) avaliado(a) que envie o link correto contendo:</p>
+                    <div class="erro-code">?codigo=XXX&nome=YYY&tipo=ZZZ</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ETAPA 0: DADOS DO AVALIADOR -->
+        <div class="step-content" data-step="0" id="etapaDados" style="display: none;">
             <div class="step-header">
                 <span class="step-tag">📋 Etapa 1 de 10</span>
-                <h2 class="step-title">👤 Identificação</h2>
-                <p class="step-subtitle">Antes de começarmos, precisamos te conhecer melhor.</p>
+                <h2 class="step-title">👤 Seus Dados (Avaliador)</h2>
+                <p class="step-subtitle">Antes de começarmos, precisamos te conhecer.</p>
+            </div>
+
+            <div class="info-avaliacao">
+                <h4>🎯 Você está avaliando: <span id="infoNomeAvaliado"></span></h4>
+                <p>Tipo de avaliação: <strong id="infoTipoAvaliacao"></strong></p>
             </div>
 
             <div class="verse-box">
-                "Sonda-me, ó Deus, e conhece o meu coração; prova-me e conhece os meus pensamentos."
-                <cite>— Salmos 139:23</cite>
+                "Como o ferro com ferro se afia, assim o homem afia o seu próximo."
+                <cite>— Provérbios 27:17</cite>
             </div>
 
             <div class="form-group">
-                <label>Nome Completo <span class="required">*</span></label>
+                <label>Seu Nome Completo <span class="required">*</span></label>
                 <input type="text" id="nome" required placeholder="Digite seu nome completo">
             </div>
 
             <div class="form-group">
-                <label>E-mail <span class="required">*</span></label>
+                <label>Seu E-mail <span class="required">*</span></label>
                 <input type="email" id="email" required placeholder="seu@email.com">
             </div>
 
             <div class="form-group">
-                <label>Cargo / Função Ministerial <span class="required">*</span></label>
-                <input type="text" id="cargo" required placeholder="Ex: Pastor, Líder de Célula, Diácono...">
+                <label>Seu Cargo / Função (opcional)</label>
+                <input type="text" id="cargo" placeholder="Ex: Pastor, Líder, Membro...">
             </div>
 
             <div class="form-group">
-                <label>Igreja <span class="required">*</span></label>
-                <input type="text" id="igreja" required placeholder="Nome da sua igreja">
-            </div>
-
-            <div class="form-group">
-                <label>Tipo de Avaliação <span class="required">*</span></label>
-                <div class="tipo-avaliador-grid">
-                    <div class="tipo-option">
-                        <input type="radio" name="tipoAvaliador" id="tipo1" value="Autoavaliação" checked>
-                        <label for="tipo1">
-                            <span class="tipo-icon">🪞</span>
-                            <span class="tipo-name">Autoavaliação</span>
-                        </label>
-                    </div>
-                    <div class="tipo-option">
-                        <input type="radio" name="tipoAvaliador" id="tipo2" value="Avaliação por Par">
-                        <label for="tipo2">
-                            <span class="tipo-icon">🤝</span>
-                            <span class="tipo-name">Por Par</span>
-                        </label>
-                    </div>
-                    <div class="tipo-option">
-                        <input type="radio" name="tipoAvaliador" id="tipo3" value="Avaliação por Liderado">
-                        <label for="tipo3">
-                            <span class="tipo-icon">👥</span>
-                            <span class="tipo-name">Por Liderado</span>
-                        </label>
-                    </div>
-                    <div class="tipo-option">
-                        <input type="radio" name="tipoAvaliador" id="tipo4" value="Avaliação por Supervisor">
-                        <label for="tipo4">
-                            <span class="tipo-icon">👔</span>
-                            <span class="tipo-name">Por Supervisor</span>
-                        </label>
-                    </div>
-                </div>
+                <label>Sua Igreja (opcional)</label>
+                <input type="text" id="igreja" placeholder="Nome da sua igreja">
             </div>
 
             <div class="navigation">
-                <a href="index.html" class="btn btn-secondary">← Voltar ao Início</a>
+                <div></div>
                 <button type="button" class="btn btn-primary" onclick="proximaEtapa()">Iniciar Avaliação →</button>
             </div>
         </div>
@@ -722,20 +342,22 @@
         <div id="questoesContainer"></div>
 
         <!-- ETAPA FINAL: SUCESSO -->
-        <div class="step-content" data-step="9">
+        <div class="step-content" data-step="9" id="etapaSucesso" style="display: none;">
             <div class="success-screen">
                 <div class="success-icon">🎉</div>
                 <h2 class="success-title">Avaliação Concluída!</h2>
                 <p class="success-message">
-                    Sua avaliação foi enviada com sucesso. Em breve você receberá o relatório completo no seu e-mail.
+                    Obrigado por contribuir com o crescimento ministerial de 
+                    <strong id="sucessoNomeAvaliado"></strong>! Sua avaliação foi 
+                    enviada com sucesso e será tratada com total confidencialidade.
                 </p>
                 <div class="verse-box">
-                    "Tendo, pois, recebido o Reino inabalável, retenhamos a graça, pela qual sirvamos a Deus de modo agradável, com reverência e santo temor."
-                    <cite>— Hebreus 12:28</cite>
+                    "Como o ferro com ferro se afia, assim o homem afia o seu próximo."
+                    <cite>— Provérbios 27:17</cite>
                 </div>
-                <div style="margin-top: 2rem;">
-                    <a href="index.html" class="btn btn-primary">🏠 Voltar ao Início</a>
-                </div>
+                <p style="margin-top: 1.5rem; color: var(--text-light);">
+                    Que Deus continue te abençoando! 🙏
+                </p>
             </div>
         </div>
     </main>
@@ -759,137 +381,123 @@
 
     <script>
         // ════════════════════════════════════════════════════
-        // CONFIGURAÇÃO
+        // ⚠️ CONFIGURAÇÃO — A MESMA URL DO avaliado.html
         // ════════════════════════════════════════════════════
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwWVzeD-0iBlD8cK3WhXeWWzgyjdy4wcqucKNwtSewS75r8n97lpO9VEUY4l2WfJV7jXw/exec';
+
         // ════════════════════════════════════════════════════
-        // DADOS DAS COMPETÊNCIAS E PERGUNTAS
+        // CAPTURAR PARÂMETROS DA URL
+        // ════════════════════════════════════════════════════
+        const params = new URLSearchParams(window.location.search);
+        const CODIGO = params.get('codigo');
+        const NOME_AVALIADO = decodeURIComponent(params.get('nome') || '');
+        const TIPO_AVALIACAO = params.get('tipo');
+        const PRIMEIRO_NOME = NOME_AVALIADO.split(' ')[0];
+
+        // ════════════════════════════════════════════════════
+        // COMPETÊNCIAS E PERGUNTAS (3ª pessoa)
         // ════════════════════════════════════════════════════
         const COMPETENCIAS = [
             {
-                id: 'C1',
-                nome: 'Vida Espiritual',
-                icone: '🙏',
-                pilar: 'Caráter',
+                id: 'C1', nome: 'Vida Espiritual', icone: '🙏', pilar: 'Caráter',
                 versiculo: '"Permaneçam em mim, e eu permanecerei em vocês." — João 15:4',
                 perguntas: [
-                    'Mantenho tempo diário e consistente de leitura bíblica e oração.',
-                    'Minha vida devocional impacta visivelmente meu caráter e decisões.',
-                    'Pratico jejum e disciplinas espirituais com regularidade.',
-                    'Dependo conscientemente do Espírito Santo nas decisões ministeriais.',
-                    'Tenho intimidade real com Deus, não apenas conhecimento sobre Ele.',
-                    'Outros percebem em mim os frutos do Espírito (Gl 5:22-23).'
+                    'mantém tempo diário e consistente de leitura bíblica e oração.',
+                    'tem uma vida devocional que impacta visivelmente seu caráter e decisões.',
+                    'pratica jejum e disciplinas espirituais com regularidade.',
+                    'depende conscientemente do Espírito Santo nas decisões ministeriais.',
+                    'tem intimidade real com Deus, não apenas conhecimento sobre Ele.',
+                    'demonstra os frutos do Espírito (Gl 5:22-23) de forma visível.'
                 ]
             },
             {
-                id: 'C2',
-                nome: 'Inteligência Emocional Cristã',
-                icone: '💚',
-                pilar: 'Caráter',
+                id: 'C2', nome: 'Inteligência Emocional Cristã', icone: '💚', pilar: 'Caráter',
                 versiculo: '"O homem prudente vê o perigo e busca refúgio." — Provérbios 22:3',
                 perguntas: [
-                    'Reconheço minhas emoções antes que elas me dominem.',
-                    'Lido com a raiva de forma bíblica (Ef 4:26), sem pecar.',
-                    'Sou capaz de pedir perdão genuíno quando erro.',
-                    'Recebo críticas sem me desestabilizar emocionalmente.',
-                    'Tenho domínio próprio diante de pressão e conflitos.',
-                    'Não uso o ministério para suprir carências emocionais.',
-                    'Mantenho equilíbrio entre ministério, família e descanso.',
-                    'Sou consciente dos meus gatilhos emocionais e padrões reativos.',
-                    'Vivo com transparência — não escondo lutas dos meus íntimos.',
-                    'Demonstro empatia genuína com sofrimentos alheios.',
-                    'Lido com decepções sem amargura ou ressentimento prolongado.',
-                    'Busco ajuda (mentor, terapeuta, conselheiro) quando necessário.'
+                    'reconhece suas emoções antes que elas o(a) dominem.',
+                    'lida com a raiva de forma bíblica (Ef 4:26), sem pecar.',
+                    'é capaz de pedir perdão genuíno quando erra.',
+                    'recebe críticas sem se desestabilizar emocionalmente.',
+                    'tem domínio próprio diante de pressão e conflitos.',
+                    'não usa o ministério para suprir carências emocionais.',
+                    'mantém equilíbrio entre ministério, família e descanso.',
+                    'é consciente dos seus gatilhos emocionais e padrões reativos.',
+                    'vive com transparência — não esconde lutas dos seus íntimos.',
+                    'demonstra empatia genuína com sofrimentos alheios.',
+                    'lida com decepções sem amargura ou ressentimento prolongado.',
+                    'busca ajuda (mentor, terapeuta, conselheiro) quando necessário.'
                 ]
             },
             {
-                id: 'C3',
-                nome: 'Pregação e Ensino',
-                icone: '📖',
-                pilar: 'Competência',
+                id: 'C3', nome: 'Pregação e Ensino', icone: '📖', pilar: 'Competência',
                 versiculo: '"Maneja bem a palavra da verdade." — 2 Timóteo 2:15',
                 perguntas: [
-                    'Preparo minhas pregações com tempo adequado de estudo (mín. 8h).',
-                    'Faço exegese séria do texto antes de pregar.',
-                    'Estruturo sermões com clareza (texto, contexto, aplicação).',
-                    'Pessoas relatam transformação através das minhas pregações.',
-                    'Estudo continuamente para crescer como pregador/professor.',
-                    'Sou fiel ao texto bíblico, sem usar como pretexto para minhas ideias.'
+                    'prepara as pregações com tempo adequado de estudo.',
+                    'faz exegese séria do texto antes de pregar.',
+                    'estrutura sermões com clareza (texto, contexto, aplicação).',
+                    'gera transformação visível nos ouvintes através de suas pregações.',
+                    'estuda continuamente para crescer como pregador/professor.',
+                    'é fiel ao texto bíblico, sem usar como pretexto para ideias próprias.'
                 ]
             },
             {
-                id: 'C4',
-                nome: 'Cuidado e Acolhimento',
-                icone: '🤲',
-                pilar: 'Competência',
+                id: 'C4', nome: 'Cuidado e Acolhimento', icone: '🤲', pilar: 'Competência',
                 versiculo: '"Conhece bem o estado das tuas ovelhas." — Provérbios 27:23',
                 perguntas: [
-                    'Conheço pelo nome a maioria das pessoas que pastoreio.',
-                    'Faço visitas pastorais com regularidade (não apenas em crises).',
-                    'Sou acessível para pessoas com problemas e dúvidas.',
-                    'Tenho habilidade básica em aconselhamento bíblico.',
-                    'Antecipo necessidades das ovelhas antes que sejam comunicadas.',
-                    'Pratico o cuidado pastoral de forma sustentável (sem me esgotar).'
+                    'conhece pelo nome a maioria das pessoas que pastoreia.',
+                    'faz visitas pastorais com regularidade (não apenas em crises).',
+                    'é acessível para pessoas com problemas e dúvidas.',
+                    'tem habilidade em aconselhamento bíblico.',
+                    'antecipa necessidades das ovelhas antes que sejam comunicadas.',
+                    'pratica o cuidado pastoral de forma sustentável (sem se esgotar).'
                 ]
             },
             {
-                id: 'C5',
-                nome: 'Liderança Servidora',
-                icone: '👑',
-                pilar: 'Competência',
+                id: 'C5', nome: 'Liderança Servidora', icone: '👑', pilar: 'Competência',
                 versiculo: '"O maior entre vocês será aquele que serve." — Mateus 23:11',
                 perguntas: [
-                    'Lidero pelo exemplo, não apenas por autoridade.',
-                    'Delego tarefas e confio em minha equipe.',
-                    'Comunico visão clara e direção para os liderados.',
-                    'Dou e recebo feedback de forma saudável.',
-                    'Equilibro foco em tarefa com cuidado pelas pessoas.',
-                    'Submeto-me a autoridades espirituais sobre mim.'
+                    'lidera pelo exemplo, não apenas por autoridade.',
+                    'delega tarefas e confia em sua equipe.',
+                    'comunica visão clara e direção para os liderados.',
+                    'dá e recebe feedback de forma saudável.',
+                    'equilibra foco em tarefa com cuidado pelas pessoas.',
+                    'submete-se a autoridades espirituais sobre si.'
                 ]
             },
             {
-                id: 'C6',
-                nome: 'Discipulado e Multiplicação',
-                icone: '🌱',
-                pilar: 'Competência',
+                id: 'C6', nome: 'Discipulado e Multiplicação', icone: '🌱', pilar: 'Competência',
                 versiculo: '"Confia a homens fiéis... que sejam capazes de instruir outros." — 2 Timóteo 2:2',
                 perguntas: [
-                    'Discipulo intencionalmente pelo menos 1-3 pessoas.',
-                    'Tenho um plano estruturado para meus discipulados.',
-                    'Compartilho vida com meus discípulos (não só conteúdo).',
-                    'Meus discípulos estão sendo formados para discipular outros.',
-                    'Acompanho indicadores reais de crescimento dos discípulos.',
-                    'Já vi gerações espirituais sendo formadas (2ª, 3ª geração).'
+                    'discipula intencionalmente pelo menos 1-3 pessoas.',
+                    'tem um plano estruturado para os discipulados.',
+                    'compartilha vida com seus discípulos (não só conteúdo).',
+                    'forma discípulos para que multipliquem outros.',
+                    'acompanha indicadores reais de crescimento dos discípulos.',
+                    'já viu gerações espirituais sendo formadas (2ª, 3ª geração).'
                 ]
             },
             {
-                id: 'C7',
-                nome: 'Comunhão e Trabalho em Equipe',
-                icone: '🤝',
-                pilar: 'Comunhão',
+                id: 'C7', nome: 'Comunhão e Trabalho em Equipe', icone: '🤝', pilar: 'Comunhão',
                 versiculo: '"Como é bom e agradável quando os irmãos vivem em união." — Salmos 133:1',
                 perguntas: [
-                    'Tenho relações próximas e saudáveis com colegas de ministério.',
-                    'Sei trabalhar em equipe, dividindo decisões e crédito.',
-                    'Lido com conflitos de forma direta e construtiva.',
-                    'Pratico reconciliação rápida (Mt 5:23-24).',
-                    'Sou transparente com pessoas de confiança sobre minhas lutas.',
-                    'Construo cultura de equipe saudável onde estou.'
+                    'tem relações próximas e saudáveis com colegas de ministério.',
+                    'sabe trabalhar em equipe, dividindo decisões e crédito.',
+                    'lida com conflitos de forma direta e construtiva.',
+                    'pratica reconciliação rápida (Mt 5:23-24).',
+                    'é transparente com pessoas de confiança sobre suas lutas.',
+                    'constrói cultura de equipe saudável onde está.'
                 ]
             },
             {
-                id: 'C8',
-                nome: 'Missão e Visão de Reino',
-                icone: '🌍',
-                pilar: 'Comunhão',
+                id: 'C8', nome: 'Missão e Visão de Reino', icone: '🌍', pilar: 'Comunhão',
                 versiculo: '"Ide por todo o mundo e pregai o evangelho." — Marcos 16:15',
                 perguntas: [
-                    'Tenho paixão genuína por pessoas que não conhecem Cristo.',
-                    'Evangelizo regularmente fora dos cultos.',
-                    'Mobilizo outros cristãos para a missão.',
-                    'Penso a igreja como instrumento de transformação social.',
-                    'Apoio missões transculturais (oração, oferta, envio).',
-                    'Tenho visão de Reino que vai além da minha igreja local.'
+                    'tem paixão genuína por pessoas que não conhecem Cristo.',
+                    'evangeliza regularmente fora dos cultos.',
+                    'mobiliza outros cristãos para a missão.',
+                    'pensa a igreja como instrumento de transformação social.',
+                    'apoia missões transculturais (oração, oferta, envio).',
+                    'tem visão de Reino que vai além da igreja local.'
                 ]
             }
         ];
@@ -902,14 +510,22 @@
             { valor: 5, texto: 'Concordo Totalmente' }
         ];
 
-        // ════════════════════════════════════════════════════
-        // ESTADO
-        // ════════════════════════════════════════════════════
         let etapaAtual = 0;
-        const totalEtapas = COMPETENCIAS.length + 2; // dados + 8 competências + sucesso
+        const totalEtapas = COMPETENCIAS.length + 2;
 
         // ════════════════════════════════════════════════════
-        // GERAR PERGUNTAS DINAMICAMENTE
+        // VALIDAÇÃO INICIAL — link tem todos os parâmetros?
+        // ════════════════════════════════════════════════════
+        function validarLink() {
+            if (!CODIGO || !NOME_AVALIADO || !TIPO_AVALIACAO) {
+                document.getElementById('telaErro').style.display = 'block';
+                return false;
+            }
+            return true;
+        }
+
+        // ════════════════════════════════════════════════════
+        // GERAR PERGUNTAS DINAMICAMENTE (em 3ª pessoa)
         // ════════════════════════════════════════════════════
         function gerarEtapasPerguntas() {
             const container = document.getElementById('questoesContainer');
@@ -939,7 +555,7 @@
                     perguntasHTML += `
                         <div class="question-card" data-question="${qId}">
                             <div class="question-number">Pergunta ${idx + 1} de ${comp.perguntas.length}</div>
-                            <div class="question-text">${pergunta}</div>
+                            <div class="question-text"><strong>${PRIMEIRO_NOME}</strong> ${pergunta}</div>
                             <div class="scale-options">${opcoesHTML}</div>
                         </div>
                     `;
@@ -967,7 +583,6 @@
                 container.appendChild(div);
             });
             
-            // Listeners para marcar perguntas respondidas
             document.querySelectorAll('input[type="radio"]').forEach(radio => {
                 radio.addEventListener('change', function() {
                     const card = this.closest('.question-card');
@@ -1012,7 +627,6 @@
             if (!validarEtapa(etapaAtual)) return;
             
             if (etapaAtual === COMPETENCIAS.length) {
-                // Última etapa de perguntas - enviar
                 enviarAvaliacao();
                 return;
             }
@@ -1027,9 +641,16 @@
         function irParaEtapa(novaEtapa) {
             if (novaEtapa < 0 || novaEtapa >= totalEtapas) return;
             
-            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.step-content').forEach(el => {
+                el.classList.remove('active');
+                el.style.display = 'none';
+            });
+            
             const target = document.querySelector(`.step-content[data-step="${novaEtapa}"]`);
-            if (target) target.classList.add('active');
+            if (target) {
+                target.classList.add('active');
+                target.style.display = 'block';
+            }
             
             etapaAtual = novaEtapa;
             atualizarProgresso();
@@ -1038,11 +659,11 @@
         }
 
         // ════════════════════════════════════════════════════
-        // VALIDAÇÃO
+        // VALIDAÇÃO POR ETAPA
         // ════════════════════════════════════════════════════
         function validarEtapa(etapa) {
             if (etapa === 0) {
-                const campos = ['nome', 'email', 'cargo', 'igreja'];
+                const campos = ['nome', 'email'];
                 for (const id of campos) {
                     const el = document.getElementById(id);
                     if (!el.value.trim()) {
@@ -1098,27 +719,26 @@
         }
 
         // ════════════════════════════════════════════════════
-        // LOCALSTORAGE - SALVAMENTO AUTOMÁTICO
+        // LOCALSTORAGE (chave única por código)
         // ════════════════════════════════════════════════════
+        const STORAGE_KEY = `discipulado360_avaliador_${CODIGO}_${TIPO_AVALIACAO}`;
+
         function salvarLocalStorage() {
             const dados = coletarDados();
-            localStorage.setItem('discipulado360_dados', JSON.stringify(dados));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(dados));
         }
 
         function carregarLocalStorage() {
-            const salvo = localStorage.getItem('discipulado360_dados');
+            const salvo = localStorage.getItem(STORAGE_KEY);
             if (!salvo) return;
             
             try {
                 const dados = JSON.parse(salvo);
-                if (dados.nome) document.getElementById('nome').value = dados.nome;
-                if (dados.email) document.getElementById('email').value = dados.email;
-                if (dados.cargo) document.getElementById('cargo').value = dados.cargo;
-                if (dados.igreja) document.getElementById('igreja').value = dados.igreja;
-                if (dados.tipoAvaliador) {
-                    const radio = document.querySelector(`input[name="tipoAvaliador"][value="${dados.tipoAvaliador}"]`);
-                    if (radio) radio.checked = true;
-                }
+                if (dados.nomeAvaliador) document.getElementById('nome').value = dados.nomeAvaliador;
+                if (dados.emailAvaliador) document.getElementById('email').value = dados.emailAvaliador;
+                if (dados.cargoAvaliador) document.getElementById('cargo').value = dados.cargoAvaliador;
+                if (dados.igrejaAvaliador) document.getElementById('igreja').value = dados.igrejaAvaliador;
+                
                 if (dados.respostas) {
                     Object.entries(dados.respostas).forEach(([key, val]) => {
                         const radio = document.querySelector(`input[name="${key}"][value="${val}"]`);
@@ -1129,7 +749,7 @@
                         }
                     });
                 }
-                mostrarToast('📥 Dados anteriores restaurados', 'success');
+                mostrarToast('📥 Respostas anteriores restauradas', 'success');
             } catch (e) {
                 console.warn('Erro ao carregar dados salvos:', e);
             }
@@ -1141,17 +761,18 @@
         function coletarDados() {
             const respostas = {};
             document.querySelectorAll('input[type="radio"]:checked').forEach(input => {
-                if (input.name !== 'tipoAvaliador') {
-                    respostas[input.name] = parseInt(input.value);
-                }
+                respostas[input.name] = parseInt(input.value);
             });
             
             return {
-                nome: document.getElementById('nome').value.trim(),
-                email: document.getElementById('email').value.trim(),
-                cargo: document.getElementById('cargo').value.trim(),
-                igreja: document.getElementById('igreja').value.trim(),
-                tipoAvaliador: document.querySelector('input[name="tipoAvaliador"]:checked')?.value || 'Autoavaliação',
+                acao: 'salvarAvaliador',
+                codigo: CODIGO,
+                tipo: TIPO_AVALIACAO,
+                nomeAvaliado: NOME_AVALIADO,
+                nomeAvaliador: document.getElementById('nome').value.trim(),
+                emailAvaliador: document.getElementById('email').value.trim(),
+                cargoAvaliador: document.getElementById('cargo').value.trim(),
+                igrejaAvaliador: document.getElementById('igreja').value.trim(),
                 respostas: respostas
             };
         }
@@ -1172,10 +793,10 @@
                     body: JSON.stringify(dados)
                 });
                 
-                // Como mode: no-cors não retorna resposta legível, assumimos sucesso
-                localStorage.removeItem('discipulado360_dados');
+                localStorage.removeItem(STORAGE_KEY);
                 loading.classList.remove('active');
                 irParaEtapa(totalEtapas - 1);
+                document.getElementById('sucessoNomeAvaliado').textContent = NOME_AVALIADO;
                 mostrarToast('✅ Avaliação enviada com sucesso!', 'success');
                 
             } catch (erro) {
@@ -1199,17 +820,29 @@
         // INICIALIZAÇÃO
         // ════════════════════════════════════════════════════
         document.addEventListener('DOMContentLoaded', () => {
+            if (!validarLink()) return;
+            
+            // Mostrar banner e progress
+            document.getElementById('bannerConvite').style.display = 'block';
+            document.getElementById('bannerNome').textContent = NOME_AVALIADO;
+            document.getElementById('bannerTipo').textContent = TIPO_AVALIACAO;
+            document.getElementById('progressContainer').style.display = 'block';
+            
+            // Mostrar etapa de dados
+            document.getElementById('etapaDados').style.display = 'block';
+            document.getElementById('etapaDados').classList.add('active');
+            document.getElementById('infoNomeAvaliado').textContent = NOME_AVALIADO;
+            document.getElementById('infoTipoAvaliacao').textContent = TIPO_AVALIACAO;
+            
+            // Gerar perguntas e indicador
             gerarEtapasPerguntas();
             gerarIndicadorEtapas();
             carregarLocalStorage();
             atualizarProgresso();
             
-            // Salvar dados ao digitar
+            // Salvar ao digitar
             ['nome', 'email', 'cargo', 'igreja'].forEach(id => {
                 document.getElementById(id).addEventListener('input', salvarLocalStorage);
-            });
-            document.querySelectorAll('input[name="tipoAvaliador"]').forEach(r => {
-                r.addEventListener('change', salvarLocalStorage);
             });
         });
     </script>
